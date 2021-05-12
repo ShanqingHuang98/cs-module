@@ -1,3 +1,4 @@
+
 package com.github.hcsp.http;
 
 import com.alibaba.fastjson.JSON;
@@ -25,7 +26,6 @@ public class Crawler {
         String title;
         // Pull request的作者的 GitHub 用户名
         String author;
-
         GitHubPullRequest(int number, String title, String author) {
             this.number = number;
             this.title = title;
@@ -33,6 +33,7 @@ public class Crawler {
         }
     }
 
+    // 给定一个仓库名，例如"golang/go"，或者"gradle/gradle"，返回第一页的Pull request信息
     public static List<GitHubPullRequest> getFirstPageOfPullRequests(String repo) throws IOException {
 
         List<GitHubPullRequest> gitHubPullRequests = new ArrayList<>();
@@ -62,15 +63,3 @@ public class Crawler {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

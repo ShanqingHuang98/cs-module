@@ -8,8 +8,16 @@ public class HTTPClient {
     private PrintWriter pw;
     private BufferedReader br;
 
+    String ip = "127.0.0.1";
+    String port="8080";
+
+    public static void main(String[] args) throws IOException {
+        new HTTPClient();
+
+    }
+
     // 其实和server的差不多，但是client需要确认ip？
-    public void TCPClient(String ip, String port) throws IOException {
+    public HTTPClient() throws IOException {
         //向服务器发起连接，实现三次握手
         // 不成功则抛出错误
         socket = new Socket(ip, Integer.parseInt(port));
@@ -21,6 +29,7 @@ public class HTTPClient {
 // 输入字节流地址，封装（咋封的？
         InputStream socketIn = socket.getInputStream();
         br = new BufferedReader(new InputStreamReader(socketIn, "utf-8"));
+
     }
 
     // 实现网络通信发送和接收
@@ -39,9 +48,9 @@ public class HTTPClient {
         return msg;
     }
 
-    public void close(){
+    public void close() {
         try {
-            if(socket!=null){
+            if (socket != null) {
                 socket.close();
             }
         } catch (IOException e) {
